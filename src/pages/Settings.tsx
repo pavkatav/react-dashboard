@@ -17,22 +17,22 @@ export default function Settings() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6 pt-12 md:pt-0">
       <h1 
-        className="text-3xl font-bold"
+        className="text-2xl md:text-3xl font-bold"
         style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
       >
         Settings
       </h1>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
         {/* Theme Settings */}
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h2 
-            className="text-lg font-semibold mb-4"
+            className="text-base md:text-lg font-semibold mb-4"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             Theme Settings
@@ -46,6 +46,7 @@ export default function Settings() {
                 <Moon className="w-5 h-5 text-blue-500" />
               )}
               <span 
+                className="text-sm md:text-base"
                 style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
               >
                 {theme === "light" ? "Light Mode" : "Dark Mode"}
@@ -69,11 +70,11 @@ export default function Settings() {
 
         {/* Profile Settings */}
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h2 
-            className="text-lg font-semibold mb-4"
+            className="text-base md:text-lg font-semibold mb-4"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             Profile Settings
@@ -82,7 +83,7 @@ export default function Settings() {
           <div className="space-y-4">
             <div>
               <label 
-                className="block text-sm font-medium mb-1"
+                className="block text-xs md:text-sm font-medium mb-1"
                 style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
               >
                 Full Name
@@ -91,7 +92,7 @@ export default function Settings() {
                 type="text"
                 value={profile.name}
                 onChange={(e) => handleProfileChange("name", e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
                 style={{
                   backgroundColor: theme === 'dark' ? '#374151' : '#ffffff',
                   color: theme === 'dark' ? '#ffffff' : '#111827',
@@ -102,7 +103,7 @@ export default function Settings() {
 
             <div>
               <label 
-                className="block text-sm font-medium mb-1"
+                className="block text-xs md:text-sm font-medium mb-1"
                 style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
               >
                 Email
@@ -111,7 +112,7 @@ export default function Settings() {
                 type="email"
                 value={profile.email}
                 onChange={(e) => handleProfileChange("email", e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
                 style={{
                   backgroundColor: theme === 'dark' ? '#374151' : '#ffffff',
                   color: theme === 'dark' ? '#ffffff' : '#111827',
@@ -122,7 +123,7 @@ export default function Settings() {
 
             <div>
               <label 
-                className="block text-sm font-medium mb-1"
+                className="block text-xs md:text-sm font-medium mb-1"
                 style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
               >
                 Company
@@ -131,7 +132,7 @@ export default function Settings() {
                 type="text"
                 value={profile.company}
                 onChange={(e) => handleProfileChange("company", e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
                 style={{
                   backgroundColor: theme === 'dark' ? '#374151' : '#ffffff',
                   color: theme === 'dark' ? '#ffffff' : '#111827',
@@ -142,7 +143,7 @@ export default function Settings() {
 
             <div>
               <label 
-                className="block text-sm font-medium mb-1"
+                className="block text-xs md:text-sm font-medium mb-1"
                 style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
               >
                 Role
@@ -150,7 +151,7 @@ export default function Settings() {
               <select
                 value={profile.role}
                 onChange={(e) => handleProfileChange("role", e.target.value)}
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm md:text-base"
                 style={{
                   backgroundColor: theme === 'dark' ? '#374151' : '#ffffff',
                   color: theme === 'dark' ? '#ffffff' : '#111827',
@@ -163,7 +164,7 @@ export default function Settings() {
               </select>
             </div>
 
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm md:text-base">
               Save Changes
             </button>
           </div>
@@ -172,11 +173,11 @@ export default function Settings() {
 
       {/* Additional Settings */}
       <div 
-        className="p-6 rounded-lg shadow"
+        className="p-4 md:p-6 rounded-lg shadow"
         style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
       >
         <h2 
-          className="text-lg font-semibold mb-4"
+          className="text-base md:text-lg font-semibold mb-4"
           style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
         >
           Preferences
@@ -184,7 +185,10 @@ export default function Settings() {
 
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}>
+            <span 
+              className="text-sm md:text-base"
+              style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
+            >
               Email Notifications
             </span>
             <input
@@ -195,7 +199,10 @@ export default function Settings() {
           </div>
 
           <div className="flex items-center justify-between">
-            <span style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}>
+            <span 
+              className="text-sm md:text-base"
+              style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
+            >
               Push Notifications
             </span>
             <input
@@ -205,7 +212,10 @@ export default function Settings() {
           </div>
 
           <div className="flex items-center justify-between">
-            <span style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}>
+            <span 
+              className="text-sm md:text-base"
+              style={{ color: theme === 'dark' ? '#d1d5db' : '#374151' }}
+            >
               Weekly Reports
             </span>
             <input

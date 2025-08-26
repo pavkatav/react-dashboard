@@ -10,31 +10,38 @@ export default function Analytics() {
   const { theme } = useStore()
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6 pt-12 md:pt-0">
       <h1 
-        className="text-3xl font-bold"
+        className="text-2xl md:text-3xl font-bold"
         style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
       >
         Analytics
       </h1>
       
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
         {/* Signups Chart */}
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h2 
-            className="text-lg font-semibold mb-4"
+            className="text-base md:text-lg font-semibold mb-4"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             User Signups Over Time
           </h2>
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300}>
             <LineChart data={signupData}>
               <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
+              <XAxis 
+                dataKey="name" 
+                fontSize={12}
+                hide={window.innerWidth < 640}
+              />
+              <YAxis 
+                fontSize={12}
+                hide={window.innerWidth < 640}
+              />
               <Tooltip />
               <Line type="monotone" dataKey="value" stroke="#3B82F6" strokeWidth={2} />
             </LineChart>
@@ -43,24 +50,24 @@ export default function Analytics() {
 
         {/* User Roles Pie Chart */}
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h2 
-            className="text-lg font-semibold mb-4"
+            className="text-base md:text-lg font-semibold mb-4"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             User Roles Distribution
           </h2>
-          <ResponsiveContainer width="100%" height={400}>
+          <ResponsiveContainer width="100%" height={300}>
             <PieChart>
               <Pie
                 data={roleData}
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
-                outerRadius={120}
+                label={({ name, percent }) => window.innerWidth >= 640 ? `${name} ${((percent ?? 0) * 100).toFixed(0)}%` : ''}
+                outerRadius={window.innerWidth < 640 ? 80 : 120}
                 fill="#8884d8"
                 dataKey="value"
               >
@@ -75,62 +82,62 @@ export default function Analytics() {
       </div>
 
       {/* Statistics Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h3 
-            className="text-sm font-medium"
+            className="text-xs md:text-sm font-medium"
             style={{ color: theme === 'dark' ? '#9ca3af' : '#4b5563' }}
           >
             Average Session Duration
           </h3>
           <p 
-            className="text-2xl font-bold mt-2"
+            className="text-xl md:text-2xl font-bold mt-2"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             12m 34s
           </p>
-          <p className="text-sm text-green-500 mt-1">+8% from last month</p>
+          <p className="text-xs md:text-sm text-green-500 mt-1">+8% from last month</p>
         </div>
         
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h3 
-            className="text-sm font-medium"
+            className="text-xs md:text-sm font-medium"
             style={{ color: theme === 'dark' ? '#9ca3af' : '#4b5563' }}
           >
             Page Views
           </h3>
           <p 
-            className="text-2xl font-bold mt-2"
+            className="text-xl md:text-2xl font-bold mt-2"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             1,234,567
           </p>
-          <p className="text-sm text-green-500 mt-1">+15% from last month</p>
+          <p className="text-xs md:text-sm text-green-500 mt-1">+15% from last month</p>
         </div>
         
         <div 
-          className="p-6 rounded-lg shadow"
+          className="p-4 md:p-6 rounded-lg shadow sm:col-span-2 lg:col-span-1"
           style={{ backgroundColor: theme === 'dark' ? '#1f2937' : '#ffffff' }}
         >
           <h3 
-            className="text-sm font-medium"
+            className="text-xs md:text-sm font-medium"
             style={{ color: theme === 'dark' ? '#9ca3af' : '#4b5563' }}
           >
             Conversion Rate
           </h3>
           <p 
-            className="text-2xl font-bold mt-2"
+            className="text-xl md:text-2xl font-bold mt-2"
             style={{ color: theme === 'dark' ? '#ffffff' : '#111827' }}
           >
             3.2%
           </p>
-          <p className="text-sm text-red-500 mt-1">-2% from last month</p>
+          <p className="text-xs md:text-sm text-red-500 mt-1">-2% from last month</p>
         </div>
       </div>
     </div>
